@@ -1,17 +1,35 @@
-import React from 'react';
-import People from './People.js';
-import Options from './Options.js';
-import Tables from './Tables.js';
+import React, {Component} from 'react';
+import Students from './Students.js';
+import Teachers from './Teachers.js';
+import Subjects from './Subjects.js';
+import Grades from './Grades.js';
+import Nav from './Nav.js';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <p>Hello World</p>
-      <Tables/>
-      <Options/>
-      <p>Top Kek</p>
-    </div>
-  );
+class App extends Component{
+  constructor(){
+    super()
+    this.state = {
+
+    }
+  }
+
+  render(){
+    return (
+      <Router>
+        <div className="App">
+          <Nav />
+          <Switch>
+            <Route path="/" exact component = {Students}/>
+            <Route path="/students" exact component = {Students}/>
+            <Route path="/teachers" exact component = {Teachers}/>
+            <Route path="/subjects" exact component = {Subjects}/>
+            <Route path="/grades" exact component = {Grades}/>
+          </Switch>
+        </div>
+      </Router>
+  )
+  }
 }
 
 export default App;
