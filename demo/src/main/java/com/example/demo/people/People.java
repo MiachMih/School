@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="people")
 public class People{
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
@@ -62,8 +62,5 @@ public class People{
   public void setOccupation(String occupation){
     this.occupation = occupation;
   }
-
-
-
 
 }

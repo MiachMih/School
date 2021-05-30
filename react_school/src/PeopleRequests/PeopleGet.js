@@ -30,8 +30,9 @@ class PeopleGet extends Component{
         people.length ?
         people.map(person => {
           if(this.props.occupation === person.occupation) {
-          return <div key={person.id}><PeopleDelete id={person.id} delete={this.props.delete}/> {person.fname} {person.lname}</div>
+          return <div key={person.id}><PeopleDelete id={person.id} delete={this.props.delete}/> id:{person.id} name:{person.fname} {person.lname}</div>
         }
+        return null;
       }) :
         null
       }

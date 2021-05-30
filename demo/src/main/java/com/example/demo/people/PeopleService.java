@@ -3,10 +3,18 @@ package com.example.demo.people;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
-import java.util.Optional;import java.util.*;
+import java.util.Optional;
+
+import com.example.demo.subject.Subject;
+import com.example.demo.subject.SubjectRepository;
+
+import java.util.*;
 
 @Service // This means that this class is a Controller
 public class PeopleService {
+
+  @Autowired
+  private SubjectRepository subjectRepository;
 
   @Autowired
   private PeopleRepository peopleRepository;
@@ -29,6 +37,10 @@ public class PeopleService {
       throw new IllegalStateException("people with id "+ peopleId + " does not exist");
     }
     peopleRepository.deleteById(peopleId);
+    List<Subject> subjects = subjectRepository.findAllSubjectsByTeacherId(peopleId);
+    for(Subject subject : subjects){
+      subjectRepository.deleteById(subject.getId());
+    }
   }
 
   @Transactional

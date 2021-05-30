@@ -1,19 +1,22 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 
-class PeoplePostDelete extends Component{
+class PeoplePost extends Component{
   constructor(props){
     super(props)
     this.state = {
       fName:"",
       lName:"",
-      occupation:props.occupation
+      occupation:props.occupation,
+      regexp: /^[a-zA-Z\b]+$/
     }
   }
 
   changeHandler = (e) => {
-    if (e.target.value !== " ")
-    this.setState({[e.target.name]: e.target.value})
+    let personName = e.target.value
+    if (personName === "" || this.state.regexp.test(personName)){
+    this.setState({[e.target.name]: personName})
+    }
   }
 
   submitHandler = (e) =>{
@@ -41,8 +44,8 @@ class PeoplePostDelete extends Component{
       <div>
         <form onSubmit = {this.submitHandler}>
           <div>
-            <input type="text" name="fName" value={this.fName} placeholder="first name" onChange={this.changeHandler}/>
-            <input type="text" name="lName" value={this.lName} placeholder="last name" onChange={this.changeHandler}/>
+            <input type="text" name="fName" value={this.state.fName} placeholder="first name" onChange={this.changeHandler}/>
+            <input type="text" name="lName" value={this.state.lName} placeholder="last name" onChange={this.changeHandler}/>
           <button type="submit">Add</button>
           </div>
         </form>
@@ -52,4 +55,4 @@ class PeoplePostDelete extends Component{
 
   }
 
-export default PeoplePostDelete
+export default PeoplePost
