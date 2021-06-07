@@ -1,4 +1,4 @@
-package com.example.demo.subject;
+package com.example.demo.grade;
 
 import java.util.List;
 
@@ -16,33 +16,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path="/school/subject")
-public class SubjectController {
+@RequestMapping(path="/school/grade")
+public class GradeController {
+
     @Autowired
-    private SubjectService subjectService;
+    GradeService gradeService;
 
     @CrossOrigin
     @GetMapping
-    public List<Subject> getSubjects() {
-        return subjectService.getSubjects();
+    public List<Grade> getGrade(){
+        return gradeService.getGrade();
     }
 
     @CrossOrigin
     @PostMapping
-    public void registerNewSubjects(@RequestBody Subject subject){
-        subjectService.addNewSubjects(subject);
+    public void registerNewSubjects(@RequestBody Grade grade){
+        gradeService.addNewGrade(grade);
     }
 
     @CrossOrigin
-    @DeleteMapping(path="{subjectId}")
-    public void deleteSubject(@PathVariable("subjectId") String subjectId){
-        subjectService.deleteSubject(subjectId);
+    @DeleteMapping(path="{gradeId}")
+    public void deleteSubject(@PathVariable("gradeId") Integer gradeId){
+        gradeService.deleteGrade(gradeId);
     }
 
     @CrossOrigin
-    @PatchMapping(path = "{subjectId")
-    public void updateSubject(@PathVariable("subjectId") String subjectId,
-                              @PathVariable(required = true) Integer teacherId){
-        subjectService.updateSubject(subjectId, teacherId);
+    @PatchMapping(path = "{gradeId}")
+    public void updateSubject(@PathVariable("gradeId") Integer gradeId,
+                              @RequestBody(required = true) Grade grade){
+        gradeService.updateGrade(gradeId, grade);
     }
 }

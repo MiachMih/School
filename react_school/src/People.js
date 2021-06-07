@@ -12,7 +12,7 @@ class People extends Component{
   }
 
   setPeoplePostDelete(){
-    this.setState({key: this.state.key+1})
+    this.setState((prevState) => ({key: prevState.key+1}))
   }
 
   render(){

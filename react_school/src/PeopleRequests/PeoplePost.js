@@ -15,7 +15,7 @@ class PeoplePost extends Component{
   changeHandler = (e) => {
     let personName = e.target.value
     if (personName === "" || this.state.regexp.test(personName)){
-    this.setState({[e.target.name]: personName})
+      this.setState({[e.target.name]: personName})
     }
   }
 

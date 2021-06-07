@@ -3,6 +3,7 @@ package com.example.demo.people;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +41,7 @@ public class PeopleController {
     peopleService.deletePeople(peopleId);
   }
   @CrossOrigin
-  @PutMapping(path = "{peopleId}")
+  @PatchMapping(path = "{peopleId}")
   public void updatePeople(@PathVariable("peopleId") Integer peopleId,
                            @PathVariable(required = false) String fName,
                            @PathVariable(required = false) String lName,

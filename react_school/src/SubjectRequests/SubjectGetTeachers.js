@@ -14,7 +14,6 @@ class SubjectGetTeachers extends Component{
         axios.get('http://localhost:8080/school/people')
         .then(response => {
           this.setState({people: response.data})
-    
         })
         .catch(error => {
           console.log(error)
